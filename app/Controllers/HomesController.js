@@ -13,23 +13,24 @@ function _drawHomes() {
   homes.forEach(h => template += h.CardTemplate)
   setHTML('homes', template)
 
-  _drawCreateHomeButton()
+  _drawCreateHouseButton()
   appState.on('homes', _drawHomes)
 
   function _drawActive() {
     console.log('drawing active');
     let house = appState.activeHouse
-    setHTML('modal-guts', house.ActiveTemplate)
+    setHTML('modal-body', house.ActiveTemplate)
 }
+
 
 }
 export class HomesController {
   constructor() {
     _drawCreateHouseButton()
     // NOTE I'm listening to the active inHouse the AppState, and if it ever changes, I am going to redraw the ActiveTemplate
-    // appState.on('activeHouse', _drawActive)
-    // appState.on('homes', _drawHomes)
-    // appState.on('userName', _drawCreateHouseButton)
+    appState.on('activeHouse', _drawActive)
+    appState.on('homes', _drawHomes)
+    appState.on('userName', _drawCreateHouseButton)
 }
 
 // NOTE this is how we 'toggle' drawing homes to the page
@@ -45,7 +46,7 @@ setActive(houseId) {
 
 getHouseForm() {
     console.log('get the house form');
-    setHTML('modal-guts', House.houseForm())
+    setHTML('modal-body', House.houseForm())
 }
 
 createHouse() {
