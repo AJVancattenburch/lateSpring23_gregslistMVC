@@ -23,7 +23,7 @@ function _drawCreateCarButton() {
 function _drawActive() {
     console.log('drawing active');
     let car = appState.activeCar
-    setHTML('modal-guts', car.ActiveTemplate)
+    setHTML('modal-guts', house.ActiveTemplate)
 }
 
 export class CarsController {

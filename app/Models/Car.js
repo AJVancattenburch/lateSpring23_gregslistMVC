@@ -12,7 +12,7 @@ export class Car {
         this.description = data.description
         this.color = data.color
         this.img = data.img
-        // NOTE adding this property to inidicate which user made this
+        // NOTE adding this property to indicate which user made this
         this.creatorName = data.creatorName
     }
 

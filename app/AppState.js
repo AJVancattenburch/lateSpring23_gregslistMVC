@@ -1,4 +1,5 @@
 import { Car } from "./Models/Car.js"
+import { House } from "./Models/House.js"
 import { Value } from "./Models/Value.js"
 import { EventEmitter } from "./Utils/EventEmitter.js"
 import { isValidProp } from "./Utils/isValidProp.js"
@@ -23,6 +24,17 @@ class AppState extends EventEmitter {
 
   userName = ''
 
+  homes = [
+    new House({ year: '1974', name: 'Mid-Century Modern Single Family Home', bedrooms: 3, bathrooms: 2.5, sqft: 1500, price: 375000, description: 'Newly renovated mid-century modern home', img: 'http://www.shoesmithcox.com/files/2014/01/exterior-01.jpg'}),
+    new House({ year: '1969', name: 'Psychedelic Mushroom Home', bedrooms: 4, bathrooms: 3, sqft: 2700, price: 500000, description: 'For those among us obsessed with fungus.', img: 'http://www.shoesmithcox.com/files/2014/01/exterior-01.jpg'}),
+    new House({ year: '1899', name: 'Hill Embedded Cottage', bedrooms: 3, bathrooms: 2.5, sqft: 1800, price: 400000, description: 'Ever wanted to truly have your own personal bubble of privacy?  Look no further!', img: 'http://www.shoesmithcox.com/files/2014/01/exterior-01.jpg'})
+  ]
+
+/** @type {import('./Models/House').House[]} */
+  homes = loadState('homes', [House])
+
+  /** @type {import('./Models/House').House|null} */
+  activeHouse = null
 }
 
 export const appState = new Proxy(new AppState(), {
